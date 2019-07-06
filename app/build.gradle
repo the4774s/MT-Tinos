@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+
+    def apiKey = project.hasProperty('nextzenApiKey') ? nextzenApiKey : System.getenv('NEXTZEN_API_KEY')
+//TODO: remove Tangram if not used
+
+    defaultConfig {
+        applicationId "k.partheniadis.experimentmusion"
+        minSdkVersion 23
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        buildConfigField 'String', 'NEXTZEN_API_KEY', '"' + apiKey + '"'
+//TODO: remove Tangram if not used
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets/'] } }
+
+//    sourceSets.main.assets.srcDirs = ['../styles']//TODO: remove Tangram if not used
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    /* Tangram*/
+    implementation 'com.mapzen.tangram:tangram:0.10.1' //TODO: remove Tangram if not used
+    /* Tangram*/
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

@@ -1,0 +1,35 @@
+{
+  "name": "clay-viewer",
+  "version": "0.2.1",
+  "description": "Clay Viewer is built on top of WebGL, Supported FBX, DAE, OBJ, glTF2.0 model formats.",
+  "main": "dist/clay-viewer.js",
+  "dependencies": {
+    "claygl": "^1.1.0",
+    "zrender": "^4.0.0"
+  },
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.0.0",
+    "cross-env": "^5.1.1",
+    "filer.js": "^0.4.5",
+    "glob": "^7.1.2",
+    "mime-types": "^2.1.17",
+    "rollup-plugin-commonjs": "^8.2.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-watch": "^4.3.1",
+    "san": "^3.2.9",
+    "shelljs": "^0.7.8",
+    "webpack": "^3.6.0"
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "glsl2js": "node build/glsl2js.js",
+    "build": "npm run glsl2js && rollup -c && uglifyjs -c -m -- dist/clay-viewer.js > dist/clay-viewer.min.js",
+    "dev:editor": "cd ./editor && npm run dev",
+    "build:editor": "cd ./editor && npm run build",
+    "build:electron": "cd ./editor && npm run build:electron",
+    "build:fbx2gltf": "cd ./editor && npm run build:fbx2gltf",
+    "dist:electron": "cd ./editor && npm run dist:electron",
+    "cdist:electron": "cd ./editor && npm run cdist:electron"
+  },
+  "author": "Yi Shen"
+}

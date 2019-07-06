@@ -1,0 +1,34 @@
+{
+  "name": "clay-viewer",
+  "version": "0.2.1",
+  "description": "",
+  "main": "electron.js",
+  "author": "Yi Shen",
+  "license": "BSD-3-Clause",
+  "build": {
+    "appId": "ECOMFE.ClayViewer",
+    "mac": {
+      "category": "public.app-category.graphics-design",
+      "target": "zip",
+      "icon": "icon.icns"
+    },
+    "win": {
+      "target": "zip",
+      "icon": "icon.ico"
+    },
+    "asarUnpack": "electron/convert/**/*"
+  },
+  "scripts": {
+    "dev": "webpack -w --devtool eval-cheap-module-source-map",
+    "build": "webpack -p",
+    "build:electron": "cross-env TARGET=electron webpack",
+    "build:fbx2gltf": "cd electron/convert && pyinstaller fbx2gltf.py && rm -rf build && cp lib/fbxsip.so dist/fbx2gltf",
+    "cdist:electron": "npm run build:electron && cross-env ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ build",
+    "dist:electron": "npm run build:electron && build",
+    "pack:electron": "npm run build:electron && build --dir"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.1",
+    "electron": "^1.7.9"
+  }
+}

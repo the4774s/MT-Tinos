@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    tools:context=".TangramESActivity">
+
+    <!--<k.partheniadis.experimentmusion.PresetSelectionTextView-->
+        <!--android:id="@+id/sceneSelector"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:imeOptions="actionGo"-->
+        <!--android:completionThreshold="1"-->
+        <!--android:inputType="textUri"-->
+        <!--android:selectAllOnFocus="true"/>-->
+
+    <com.mapzen.tangram.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.mapzen.tangram.MapView>
+
+</LinearLayout>
